@@ -1,14 +1,14 @@
 // require the employee.js file to run
-const Employee = require("./Develop/lib/employee");
+const Employee = require("./employee");
 
 // define a class called Manager that extends the Employee class (so this means that Employee is the superclass)
 class Manager extends Employee {
-    // use the construction function to pass parameter officeNumber
-    constructor(officeNumber) {
-        // using this syntax to turn into {officeNumber = officeNumber} 
-        this.officeNumber = officeNumber
+    // use the construction function to pass parameters name, id, email, and officeNumber
+    constructor(name, id, email, officeNumber) {
         // inherit name, id, and email from the Employee superclass
         super(name, id, email);
+        // using this syntax to turn into {officeNumber = officeNumber} 
+        this.officeNumber = officeNumber
     }
 
     // set up method to getOfficeNumber
@@ -30,4 +30,6 @@ class Manager extends Employee {
     //}
   }
 
+  var test2 = new Manager("Cynthia", "#1116", "cynthia.h.yuen@gmail.com","651-292-6034");
+  console.log(test2);
   

@@ -57,4 +57,7 @@ class Employee {
     }
 }
 
+//var test = new Employee("Cynthia", "1116", "cynthia.h.yuen@gmail.com");
+//console.log(test);
+
 module.exports = Employee;

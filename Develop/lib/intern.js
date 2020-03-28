@@ -3,12 +3,12 @@ const Employee = require("./employee");
 
 // define a class called Intern that extends the Employee class (so this means that Employee is the superclass)
 class Intern extends Employee {
-    // use the construction function to pass parameter school
-    constructor(school) {
-        // using this syntax to turn into {school = school} 
-        this.school = school
+    // use the construction function to pass parameters name, id, email and school
+    constructor(name, id, email, school) {
         // inherit name, id, and email from the Employee superclass
         super(name, id, email);
+        // using this syntax to turn into {school = school} 
+        this.school = school
     }
 
     // set up method to getSchool
@@ -29,3 +29,6 @@ class Intern extends Employee {
         //return Manager
     //}
   }
+
+  var test4 = new Intern("Cynthia", "#1116", "cynthia.h.yuen@gmail.com", "Emory");
+  console.log(test4);
