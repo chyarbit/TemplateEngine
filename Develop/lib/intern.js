@@ -25,10 +25,20 @@ class Intern extends Employee {
         }
     }
 
-    //getRole(){
-        //return Manager
-    //}
+    getRole(){
+        // if this is not a new employee
+        if (!new Employee){
+            // console log error- please try again
+            console.log("Error- Please try again");
+        }
+        // if this is an employee
+        else {
+            // return employee
+            return "Intern"
+        }
+    }
   }
 
-  var test4 = new Intern("Cynthia", "#1116", "cynthia.h.yuen@gmail.com", "Emory");
-  console.log(test4);
+  //var test4 = new Intern("Cynthia", "#1116", "cynthia.h.yuen@gmail.com", "Emory");
+  //console.log(test4);
+  module.exports = Intern;

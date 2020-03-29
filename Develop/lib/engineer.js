@@ -25,10 +25,20 @@ class Engineer extends Employee {
         }
     }
 
-    //getRole(){
-        //return Engineer
-    //}
+    getRole(){
+        // if this is not a new employee
+        if (!new Employee){
+            // console log error- please try again
+            console.log("Error- Please try again");
+        }
+        // if this is an employee
+        else {
+            // return employee
+            return "Engineer"
+        }
+    }
   }
 
-  var test3 = new Engineer("Cynthia", "#1116", "cynthia.h.yuen@gmail.com", "chyarbit");
-  console.log(test3);
+  //var test3 = new Engineer("Cynthia", "#1116", "cynthia.h.yuen@gmail.com", "chyarbit");
+  //console.log(test3);
+  module.exports = Engineer;

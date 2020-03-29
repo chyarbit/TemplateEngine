@@ -25,11 +25,20 @@ class Manager extends Employee {
         }
     }
 
-    //getRole(){
-        //return Manager
-    //}
-  }
+    getRole(){
+        // if this is not a new employee
+        if (!new Employee){
+            // console log error- please try again
+            console.log("Error- Please try again");
+        }
+        // if this is an employee
+        else {
+        // return employee
+        return "Manager"
+        }
+    }
+}
 
-  var test2 = new Manager("Cynthia", "#1116", "cynthia.h.yuen@gmail.com","651-292-6034");
-  console.log(test2);
-  
+  //var test2 = new Manager("Cynthia", "#1116", "cynthia.h.yuen@gmail.com","651-292-6034");
+  //console.log(test2);
+  module.exports = Manager;
