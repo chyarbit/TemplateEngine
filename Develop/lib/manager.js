@@ -26,16 +26,7 @@ class Manager extends Employee {
     }
 
     getRole(){
-        // if this is not a new employee
-        if (!new Employee){
-            // console log error- please try again
-            console.log("Error- Please try again");
-        }
-        // if this is an employee
-        else {
-        // return employee
         return "Manager"
-        }
     }
 }
 

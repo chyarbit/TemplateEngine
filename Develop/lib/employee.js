@@ -52,16 +52,7 @@ class Employee {
 
     // set up method to getRole
     getRole(){
-        // if this is not a new employee
-        if (!new Employee){
-            // console log error- please try again
-            console.log("Error- Please try again");
-        }
-        // if this is an employee
-        else {
-            // return employee
-            return "Employee"
-        }
+        return "Employee"
     }
 }
 
