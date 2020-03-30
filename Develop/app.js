@@ -72,11 +72,6 @@ inquirer
 // use .then promise to open up a function and pass in the parameters as an object {name, id, email, role}
 .then(function({name, id, email, role, officeNumber, gitHub, school}){
 // and to create objects for each team member (using the correct classes as blueprints!)
-    if(role === "Manager"{
-        manager
-    })
-
-})
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
@@ -86,6 +81,6 @@ inquirer
 // `output` folder. You can use the variable `outputPath` above target this location.
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
-
+})
 ​
 

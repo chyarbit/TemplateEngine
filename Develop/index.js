@@ -15,6 +15,24 @@ function start(){
   // define constant questions for the inquirer prompt
   const questions = [
     {
+        type: "list",
+        message: "Please select a task",
+        choices: ["I would like to enter an employee", "I would like to exit the program"],
+        name: "options",
+    },
+
+    {    
+        type: "confirm",
+        message: "Are you sure you want to exit the program?",
+        name: "exit",
+        when: function(answers){
+            if(answers.options === "I would like to exit the program"){
+                render();
+                process.exit();
+            };
+        }
+    },
+    {
         type: "input",
         message: "Please enter the name",
         name: "name"
@@ -78,18 +96,27 @@ function start(){
         // if role is equal to Manager, push the information received for name, id, email, role, and office number
         if (role === "Manager"){
         html.push([{name}, {id}, {email}, {role}, {officeNumber}]);
+        start();
         // console.log(managerHTML[0]);
         }
         // if role is equal to Engineer, push the information received for name, id, email, role, and gitHub
         else if (role === "Engineer"){
-        html.push([{name}, {id}, {email}, {role}, {gitHub}])
+        html.push([{name}, {id}, {email}, {role}, {gitHub}]);
+        start();
         }
         // if role is equal to Intern, push the information received for name, id, email, role, and school
         else if (role === "Intern"){
-        html.push([{name}, {id}, {email}, {role}, {school}])
+        html.push([{name}, {id}, {email}, {role}, {school}]);
+        start();
         }
     })  
 }
 
+// declare a render function to render the information to the HTML page
+function render(){
+
+}
+
+// call functions
 start();
 
