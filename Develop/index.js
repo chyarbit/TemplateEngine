@@ -10,8 +10,10 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-// define constant questions for the inquirer prompt
-const questions = [
+// define a function to utilize the program
+function start(){
+  // define constant questions for the inquirer prompt
+  const questions = [
     {
         type: "input",
         message: "Please enter the name",
@@ -63,19 +65,31 @@ const questions = [
         return answers.role === "Intern";
         }
     }
-]
+  ]
 
-// use inquirer to gather information about the development team members by prompting the questions variable
-inquirer
-.prompt(questions)
-.then(function({name, id, email, role, officeNumber, gitHub, school}){
-    if (role === "Manager"){
-        Manager.push([{name}, {id}, {email}, {role}, {officeNumber}])
-    }
-    else if (role === "Engineer"){
-        Engineer.push([{name}, {id}, {email}, {role}, {gitHub}])
-    }
-    else if (role === "Intern"){
-        Intern.push([{name}, {id}, {email}, {role}, {school}])
-    }
-})
+
+  // use inquirer to gather information about the development team members by prompting the questions variable
+  inquirer
+  .prompt(questions)
+    // use .then promise and feed in the parameters of name, id, email, role, officeNumber, gitHub, and school
+    .then(function({name, id, email, role, officeNumber, gitHub, school}){
+        // define constant html to receive the pushed information into an array
+        const html = [];
+        // if role is equal to Manager, push the information received for name, id, email, role, and office number
+        if (role === "Manager"){
+        html.push([{name}, {id}, {email}, {role}, {officeNumber}]);
+        // console.log(managerHTML[0]);
+        }
+        // if role is equal to Engineer, push the information received for name, id, email, role, and gitHub
+        else if (role === "Engineer"){
+        html.push([{name}, {id}, {email}, {role}, {gitHub}])
+        }
+        // if role is equal to Intern, push the information received for name, id, email, role, and school
+        else if (role === "Intern"){
+        html.push([{name}, {id}, {email}, {role}, {school}])
+        }
+    })  
+}
+
+start();
+
