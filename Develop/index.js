@@ -9,7 +9,7 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 // define constant html to receive the pushed information from the promise into an array
-const html = [];
+let html = [];
 
 // require the render file
 const render = require("./lib/htmlRenderer");
@@ -76,26 +76,33 @@ function start(){
   inquirer
   .prompt(questions)
     // use .then promise and feed in the parameters of name, id, email, role, officeNumber, gitHub, and school
-    .then(function({name, id, email, role, officeNumber, gitHub, school}){
-        // if role is equal to Manager, push the information received for name, id, email, role, and office number
-        if (role === "Manager"){
-        html.push([{name}, {id}, {email}, {role}, {officeNumber}]);
-        addMember();
-        //console.log(html[0]);
-        }
-        // if role is equal to Engineer, push the information received for name, id, email, role, and gitHub
-        else if (role === "Engineer"){
-        html.push([{name}, {id}, {email}, {role}, {gitHub}]);
-        addMember();
-        }
-        // if role is equal to Intern, push the information received for name, id, email, role, and school
-        else if (role === "Intern"){
-        html.push([{name}, {id}, {email}, {role}, {school}]);
-        addMember();
-        } 
-    })  
+    .then(function(answers){
+        // use a switch case function and feed in the answers from the getRole function
+        switch(answers.role) {
+            case "manager":
+                // if the role is a manager, take the name, email, and office number
+                const manager = new Manager(answers.name, parseInt(answers.id), answers.email, answers.officeNumber);
+                // push the information into the html array
+               html.push(manager);
+               break
+    
+            case "engineer":
+                // if the role is an engineer, take the name, email, and gitHub
+                const engineer = new Engineer(answers.name, parseInt(answers.id), answers.email, answers.gitHub);
+                // push the information into the html array
+                html.push(engineer);
+                break
+    
+            case "intern":
+                // if the role is an intern, take the name, email, and school
+                const intern = new Intern(answers.name, parseInt(answers.ud), answers.email, answers.school);
+                // push the information into the html array
+                html.push(intern);
+                break
+    }
+    addMember();
+})
 }
-
 function addMember(){
     inquirer
     .prompt([
@@ -117,5 +124,3 @@ function addMember(){
 
 // call functions
 start();
-
-
