@@ -24,7 +24,7 @@ class Employee {
 
     // set up method to getID
     getId(){
-        // if no id number is provifed
+        // if no id number is provided
         if (!this.id){
             // console log "please provide an id number"
             console.log("Please provide an ID number");

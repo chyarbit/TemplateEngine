@@ -79,30 +79,33 @@ function start(){
     .then(function(answers){
         // use a switch case function and feed in the answers from the getRole function
         switch(answers.role) {
-            case "manager":
+            case "Manager":
                 // if the role is a manager, take the name, email, and office number
                 const manager = new Manager(answers.name, parseInt(answers.id), answers.email, answers.officeNumber);
                 // push the information into the html array
                html.push(manager);
                break
     
-            case "engineer":
+            case "Engineer":
                 // if the role is an engineer, take the name, email, and gitHub
                 const engineer = new Engineer(answers.name, parseInt(answers.id), answers.email, answers.gitHub);
                 // push the information into the html array
                 html.push(engineer);
                 break
     
-            case "intern":
+            case "Intern":
                 // if the role is an intern, take the name, email, and school
-                const intern = new Intern(answers.name, parseInt(answers.ud), answers.email, answers.school);
+                const intern = new Intern(answers.name, parseInt(answers.id), answers.email, answers.school);
                 // push the information into the html array
                 html.push(intern);
                 break
     }
     addMember();
+//console.log(html);
 })
 }
+
+// create addMember function to allow employer to add more employees
 function addMember(){
     inquirer
     .prompt([
@@ -117,8 +120,24 @@ function addMember(){
             start();
         }
         else{
-            render(html);
+            createHTML(html);
         }
+    })
+}
+
+// create function called render to render the html data received to the page
+function createHTML(html){
+    // if the output_dir does not exist
+    if(!fs.existsSync(OUTPUT_DIR)) {
+        // make output_dir 
+        fs.mkdirSync(OUTPUT_DIR);
+    }
+    // write file to outputPath by using the render function with the parameter html
+    fs.writeFile(outputPath, render(html), function(error){
+        // if there is an error, throw the error
+        if (error) throw error;
+        // if no error, console log File Created!
+        console.log("File created!")
     })
 }
 
